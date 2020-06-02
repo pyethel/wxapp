@@ -27,8 +27,8 @@ public class PayController {
     @RequestMapping("orderCreate")
     @ResponseBody
     public OrderDO OrderCreate(@RequestParam("orderPrice") Integer price,
-                              @RequestParam("consigneeAddr") String address,
-                              @RequestParam("token") String token){
+                               @RequestParam("consigneeAddr") String address,
+                               @RequestParam("token") String token) {
         OrderDO order = new OrderDO();
         order.setAddress(address);
         LocalDateTime time = LocalDateTime.now();
@@ -40,6 +40,4 @@ public class PayController {
         order.setState(OrderStateEnum.NOT_SEND.type);
         return orderService.saveOrder(order);
     }
-
-
 }
