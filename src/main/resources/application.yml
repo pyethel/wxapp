@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  thymeleaf:
+    check-template: false
+    check-template-location: false
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:wxapp
+    username: sa
+    password:
+    initialization-mode: always
+    sql-script-encoding: utf-8
+    continue-on-error: false
+  jpa:
+    show_sql: true
+    hibernate:
+      ddl-auto: create-drop
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: false
+        web-allow-others: false
+
