@@ -22,27 +22,39 @@ public class UserController {
         this.userService = userService;
     }
 
+    /**
+     *
+     * @param code 临时登录凭证
+     * @param rawData 用户信息
+     * @return token
+     */
     @RequestMapping("login")
     @ResponseBody
     public String GetToken(String code, String rawData) throws JsonProcessingException {
         String urlPath = "https://api.weixin.qq.com/sns/jscode2session" +   // code2session接口
-                String.format("?appid=%s", "wxd14ea32dcae0ae59") +  // appId
-                String.format("&secret=%s", "6e91d62b34a6309dfbd4def1556f2399") +   //appSecret
-                String.format("&js_code=%s", code) +    // code
-                String.format("&grant_type=%s", "authorization_code");// 固定值
-        String data = HttpRequestUtils.sendPost(urlPath);
+                // appId
+                String.format("?appid=%s", "wxd14ea32dcae0ae59") +
+                //appSecret
+                String.format("&secret=%s", "6e91d62b34a6309dfbd4def1556f2399") +
+                // code
+                String.format("&js_code=%s", code) +
+                // 固定值
+                String.format("&grant_type=%s", "authorization_code");
+        String data = HttpRequestUtils.sendPost(urlPath);   // 返回openid session_key
+        System.out.println(data);
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode rootNode = mapper.readTree(data); // 读取Json
-        String openid = rootNode.path("openid").asText();   // openid作为用户唯一标识
+        JsonNode rootNode = mapper.readTree(data);          // 读取Json
+        String openid = rootNode.path("openid").asText();
+        // openid作为用户唯一标识
         UserDO user = userService.findOneById((openid));
         if(user==null)
         {//  存用户
-            String token = UUID.randomUUID().toString();    // 生成token
+            // 生成token UUID
+            String token = UUID.randomUUID().toString();
             userService.saveRawDataAndOpenId(rawData, openid, token);
             return token;
         }else{
             // 用户存在
-            System.out.println(user.getToken());
             return user.getToken();     //返回token
         }
     }

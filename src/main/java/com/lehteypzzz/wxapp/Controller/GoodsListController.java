@@ -20,7 +20,7 @@ public class GoodsListController {
         this.goodsService = goodsService;
     }
 
-    @RequestMapping("/getGoodsList")
+    @RequestMapping("getGoodsList")
     @ResponseBody
     public GoodsListVO getGoodsList(Integer pageNum, Integer pageSize){
         List<GoodsDO> total = goodsService.findAll();

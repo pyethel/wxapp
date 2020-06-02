@@ -24,6 +24,12 @@ public class OrderController {
         this.orderService = orderService;
     }
 
+    /**
+     *
+     * @param type 订单状态
+     * @param token 令牌
+     * @return 订单列表
+     */
     @RequestMapping("getOrder")
     @ResponseBody
     public List<OrderDO> GetOrder(int type, String token){

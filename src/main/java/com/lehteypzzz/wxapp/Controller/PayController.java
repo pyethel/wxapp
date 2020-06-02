@@ -24,6 +24,13 @@ public class PayController {
         this.userService = userService;
     }
 
+    /**
+     *
+     * @param price 订单价格
+     * @param address 收货地址
+     * @param token 令牌
+     * @return 订单
+     */
     @RequestMapping("orderCreate")
     @ResponseBody
     public OrderDO OrderCreate(@RequestParam("orderPrice") Integer price,

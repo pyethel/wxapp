@@ -29,7 +29,7 @@ public class IndexController {
         this.categoryService = categoryService;
     }
 
-    @RequestMapping("/swiper")
+    @RequestMapping("swiper")
     @ResponseBody
     public List<IndexGoodsVO> IndexSwiper() {
         //类映射工具 对象转换
@@ -44,7 +44,7 @@ public class IndexController {
         return result;
     }
 
-    @RequestMapping("/floor")
+    @RequestMapping("floor")
     @ResponseBody
     public List<IndexFloorVO>IndexFloor(){
         List<IndexFloorVO> result = new ArrayList<>();
