@@ -17,11 +17,12 @@ import java.util.UUID;
 public class UserController {
     final
     UserService userService;
-
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
+    final String appId = "wxd14ea32dcae0ae59";
+    final String appSecret = "6e91d62b34a6309dfbd4def1556f2399";
     /**
      *
      * @param code 临时登录凭证
@@ -33,9 +34,9 @@ public class UserController {
     public String GetToken(String code, String rawData) throws JsonProcessingException {
         String urlPath = "https://api.weixin.qq.com/sns/jscode2session" +   // code2session接口
                 // appId
-                String.format("?appid=%s", "wxd14ea32dcae0ae59") +
+                String.format("?appid=%s", appId) +
                 //appSecret
-                String.format("&secret=%s", "6e91d62b34a6309dfbd4def1556f2399") +
+                String.format("&secret=%s", appSecret) +
                 // code
                 String.format("&js_code=%s", code) +
                 // 固定值
