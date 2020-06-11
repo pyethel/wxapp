@@ -10,3 +10,4 @@ h2控制台 localhost:8080/console
     username: sa
     password:
     
+运行注意清除前端缓存
