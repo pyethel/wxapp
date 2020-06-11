@@ -23,6 +23,7 @@ public class GoodsListController {
     @RequestMapping("getGoodsList")
     @ResponseBody
     public GoodsListVO getGoodsList(Integer pageNum, Integer pageSize){
+        // 查询所有
         List<GoodsDO> total = goodsService.findAll();
         GoodsListVO goodsListVO = new GoodsListVO();
         goodsListVO.setPageNum(pageNum);
