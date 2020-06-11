@@ -11,3 +11,4 @@ h2控制台 localhost:8080/console
     password:
     
 运行注意清除前端缓存
+内存数据库中没有token可能导致订单发送失败
